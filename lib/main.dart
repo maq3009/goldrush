@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
 import 'package:goldrush/components/george.dart';
 import 'package:goldrush/components/background.dart';
+import 'package:goldrush/components/character.dart';
+import 'package:goldrush/components/skeleton.dart';
+import 'package:goldrush/components/zombie.dart';
 
 
 
@@ -41,7 +44,10 @@ class GoldRush extends FlameGame with HasCollisionDetection {
   Future<void> onLoad() async {
     super.onLoad();
       add(Background());
-      add(George());
+      add(George(
+        position: Vector2(200, 400),
+        size: Vector2(48.0, 48.0),
+        speed: 40.0));
       add(ScreenHitbox());
   }
 
