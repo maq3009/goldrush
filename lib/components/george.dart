@@ -51,25 +51,7 @@ class George extends SpriteAnimationComponent with CollisionCallbacks {
     add(RectangleHitbox());
   }
 
-  void changeDirection() {
-    Random random = Random();
-    int newDirection = random.nextInt(4);
-    switch (newDirection) {
-      case 0:
-        animation = georgeDownAnimation;
-        break;
-      case 1:
-        animation = georgeLeftAnimation;
-        break;
-      case 2:
-        animation = georgeUpAnimation;
-        break;
-      case 3:
-        animation = georgeRightAnimation;
-        break;
-    }
-    currentDirection = newDirection;
-  }
+
 
   @override
   void update(double dt) {
@@ -100,17 +82,17 @@ class George extends SpriteAnimationComponent with CollisionCallbacks {
   void onCollision(Set<Vector2> intersectionPoints, other) {
     super.onCollision(intersectionPoints, other);
 
-    if (position.x < 0) {
-      position.x = 0;  // Clamp to the left edge
-    } else if (position.x + size.x > screenWidth) {
-      position.x = screenWidth - size.x;  // Clamp to the right edge
-    }
+    // if (position.x < 0) {
+    //   position.x = 0;  // Clamp to the left edge
+    // } else if (position.x + size.x > screenWidth) {
+    //   position.x = screenWidth - size.x;  // Clamp to the right edge
+    // }
 
-    if (position.y < 0) {
-      position.y = 0;  // Clamp to the top edge
-    } else if (position.y + size.y > screenHeight) {
-      position.y = screenHeight - size.y;  // Clamp to the bottom edge
-    }
+    // if (position.y < 0) {
+    //   position.y = 0;  // Clamp to the top edge
+    // } else if (position.y + size.y > screenHeight) {
+    //   position.y = screenHeight - size.y;  // Clamp to the bottom edge
+    // }
 
 
 
