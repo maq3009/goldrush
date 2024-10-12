@@ -1,3 +1,4 @@
+import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/palette.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,7 @@ void main() async {
 }
 
 
-class GoldRush extends FlameGame with HasCollisionDetection{
+class GoldRush extends FlameGame with HasCollisionDetection {
   static const int squareSpeed = 250;
   static final squarePaint = BasicPalette.green.paint();
   static const squareWidth = 100.0, squareHeight = 100.0;
@@ -41,6 +42,7 @@ class GoldRush extends FlameGame with HasCollisionDetection{
     super.onLoad();
       add(Background());
       add(George());
+      add(ScreenHitbox());
   }
 
 
