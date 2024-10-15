@@ -1,11 +1,12 @@
 import 'package:flame/components.dart';
+import 'package:flame/events.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
 import 'package:goldrush/components/george.dart';
 import 'package:goldrush/components/background.dart';
-import 'package:goldrush/components/character.dart';
+import 'package:goldrush/components/hud/hud.dart';
 import 'package:goldrush/components/skeleton.dart';
 import 'package:goldrush/components/zombie.dart';
 
@@ -29,7 +30,11 @@ void main() async {
 }
 
 
-class GoldRush extends FlameGame with HasCollisionDetection {
+class GoldRush extends FlameGame with 
+  HasCollisionDetection,
+  DragCallbacks,
+  TapCallbacks
+ {
   static const int squareSpeed = 250;
   static final squarePaint = BasicPalette.green.paint();
   static const squareWidth = 100.0, squareHeight = 100.0;
@@ -43,6 +48,7 @@ class GoldRush extends FlameGame with HasCollisionDetection {
   @override
   Future<void> onLoad() async {
     super.onLoad();
+      add(HudComponent());
       add(Background());
       add(George(
         position: Vector2(200, 400),
@@ -62,9 +68,4 @@ class GoldRush extends FlameGame with HasCollisionDetection {
         speed: 60.0));            
       add(ScreenHitbox());
   }
-
-
-
-
-
 }
