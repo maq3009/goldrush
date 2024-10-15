@@ -1,4 +1,5 @@
 import 'package:flame/components.dart';
+import 'package:flame/events.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/palette.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,9 @@ import 'package:goldrush/components/george.dart';
 import 'package:goldrush/components/background.dart';
 import 'package:goldrush/components/skeleton.dart';
 import 'package:goldrush/components/zombie.dart';
+import 'package:goldrush/components/hud/hud.dart';
+
+
 
 //GAME SYNOPSIS -
 //In GoldRush, you play as an explorer who must travel across the land in search of wealth by collecting
@@ -21,7 +25,13 @@ void main() async {
   runApp(GameWidget(game: goldRush));
 }
 
-class GoldRush extends FlameGame with HasCollisionDetection {
+class GoldRush extends FlameGame with 
+  HasCollisionDetection,
+  DragCallbacks,
+  TapCallbacks 
+{
+
+
   static const int squareSpeed = 250;
   static final squarePaint = BasicPalette.green.paint();
   static const squareWidth = 100.0, squareHeight = 100.0;
@@ -32,6 +42,7 @@ class GoldRush extends FlameGame with HasCollisionDetection {
   @override
   Future<void> onLoad() async {
     super.onLoad();
+    add(HudComponent());
     add(Background());
     add(George(
         position: Vector2(200, 400), size: Vector2(48.0, 48.0), speed: 40.0));
