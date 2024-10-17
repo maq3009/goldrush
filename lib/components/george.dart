@@ -10,6 +10,7 @@ class George extends SpriteAnimationComponent with CollisionCallbacks {
       {required Vector2 position, required Vector2 size, required double speed})
       : super(
           position: position,
+          size: size,
         );
 
   late double screenWidth, screenHeight, centerX, centerY;
